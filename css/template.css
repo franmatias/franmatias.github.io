@@ -1,0 +1,289 @@
+/* Plantilla CSS siguiendo la metodología SMACSS */
+/* Base - Estilos base y reset */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --gray-light: #f5f6fa;
+    --font-primary: 'Open Sans', sans-serif;
+    --font-heading: 'Roboto', sans-serif;
+    --base-font-size: 16px;
+    --line-height: 1.6;
+}
+
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--base-font-size);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Layout */
+.l-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.l-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.l-main {
+    margin: 2rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+.l-footer {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* Módulos */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav__link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--secondary-color);
+}
+
+/* Nuevo: Botón hamburguesa */
+.nav__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav__toggle-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    position: relative;
+    /* Aseguramos que la línea central esté perfectamente alineada */
+    margin: 10px 0;
+}
+
+.nav__toggle-icon::before,
+.nav__toggle-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-color);
+    transition: transform 0.3s;
+}
+
+.nav__toggle-icon::before {
+    /* Ajustamos la posición para perfecta alineación */
+    top: -10px;
+}
+
+.nav__toggle-icon::after {
+    /* Ajustamos la posición para perfecta alineación */
+    top: 10px;
+}
+
+/* Estado activo del botón */
+.nav__toggle.is-active .nav__toggle-icon {
+    background-color: transparent;
+}
+
+.nav__toggle.is-active .nav__toggle-icon::before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.nav__toggle.is-active .nav__toggle-icon::after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Estilos para el botón Top con flecha CSS */
+.top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.top-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.top-button.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Flecha creada con CSS */
+.top-button::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-right: 3px solid var(--background-color);
+    border-top: 3px solid var(--background-color);
+    transform: rotate(-45deg) translateY(2px);
+    display: block;
+    margin: 0 11px;
+}
+
+.hero {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.section {
+    margin: 4rem 0;
+}
+
+.section__title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--gray-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card__title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.card__content {
+    margin-bottom: 1rem;
+}
+
+.code-example {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.code-example pre {
+    margin: 0;
+}
+
+/* Estados */
+.is-hidden {
+    display: none;
+}
+
+.is-visible {
+    display: block;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 2rem;
+    }
+
+    .section__title {
+        font-size: 1.75rem;
+    }
+
+    .nav__toggle {
+        display: block;
+    }
+
+    .top-button {
+        bottom: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .top-button::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    .nav__list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav__list.is-visible {
+        display: flex;
+    }
+
+    .nav {
+        position: relative;
+    }
+}

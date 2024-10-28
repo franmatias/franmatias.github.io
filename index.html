@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ciclos formativos</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="container">
-        <header>Bienvenidos</header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobremi.html">Sobre mi</a></li>
-                <li><a href="">Proyectos</a></li>
-                <li><a href="">Enlace 4</a></li>
-                <li><a href="contactar.html">Contactar</a></li>
-            </ul>
-        </nav>
+        <header>
+            <h1>Bienvenidos a un Proyecto Web</h1>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobremi.html">Sobre mi</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contactar.html">Contactar</a></li>
+                </ul>
+            </nav>
+            <button class="button-responsive" id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        </header>
         <main>
+
             <section>
-                <article></article>
-                <article></article>
+                <h2>Diseño Web</h2>
+                <article>
+                    <h3>Proyecto 1</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus odit recusandae animi ex
+                        laboriosam sequi vero aperiam. Quisquam debitis nemo suscipit eaque, non fuga totam eveniet
+                        architecto. Quae, dolor sequi.</p>
+                </article>
+                <article>
+                    <h3>Proyecto 2</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus odit recusandae animi ex
+                        laboriosam sequi vero aperiam. Quisquam debitis nemo suscipit eaque, non fuga totam eveniet
+                        architecto. Quae, dolor sequi.</p>
+                </article>
             </section>
             <section>
-                <article></article>
-                <article></article>
+                <h2>Programación</h2>
+                <article>
+                    <h3>Proyecto 1</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus odit recusandae animi ex
+                        laboriosam sequi vero aperiam. Quisquam debitis nemo suscipit eaque, non fuga totam eveniet
+                        architecto. Quae, dolor sequi.</p>
+                </article>
+                <article>
+                    <h3>Proyecto 2</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus odit recusandae animi ex
+                        laboriosam sequi vero aperiam. Quisquam debitis nemo suscipit eaque, non fuga totam eveniet
+                        architecto. Quae, dolor sequi.</p>
+                </article>
             </section>
         </main>
-        <footer></footer>
+        <aside>
+            <ul class="nav-aside">
+                <li><a href="">enlace1</a></li>
+                <li><a href="">enlace2</a></li>
+                <li><a href="">enlace3</a></li>
+                <li><a href="">enlace4</a></li>
+            </ul>
+        </aside>
+        <footer>
+            <p>Desarrollado por Profesor. <small>Todos los derechos reservados &copy; 2024</small></p>
+        </footer>
     </div>
+    <script src="js/app.js"></script>
 </body>
+
 </html>

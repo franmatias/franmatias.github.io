@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía SMACSS - Arquitectura CSS Escalable y Modular</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/template.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
+    
+    <header class="l-header">
+        <nav class="nav l-container">
+            <h1 style="font-size: 1.5rem;">SMACSS</h1>
+            <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+                <span class="nav__toggle-icon"></span>
+            </button>
+            <ul class="nav__list">
+                <li><a href="#introduccion" class="nav__link">Introducción</a></li>
+                <li><a href="#categorias" class="nav__link">Categorías</a></li>
+                <li><a href="#ejemplos" class="nav__link">Ejemplos</a></li>
+                <li><a href="#mejores-practicas" class="nav__link">Mejores Prácticas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="l-container">
+            <h2 class="hero__title">SMACSS</h2>
+            <p class="hero__subtitle">Scalable and Modular Architecture for CSS</p>
+        </div>
+    </div>
+
+    <main id="main" class="l-main">
+        <div class="l-container">
+            <section id="introduccion" class="section">
+                <h2 class="section__title">¿Qué es SMACSS?</h2>
+                <div class="card">
+                    <div class="card__content">
+                        <p>SMACSS (Scalable and Modular Architecture for CSS) es una metodología de diseño creada por Jonathan Snook que proporciona una forma estructurada de organizar las reglas CSS de un proyecto. No es un framework, sino más bien un estilo de guía que ayuda a:</p>
+                        <ul style="margin: 1rem 0 1rem 2rem;">
+                            <li>Aumentar la semántica del código</li>
+                            <li>Incrementar la reutilización de código</li>
+                            <li>Mejorar la mantenibilidad del proyecto</li>
+                            <li>Reducir la especificidad de los selectores</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="categorias" class="section">
+                <h2 class="section__title">Categorías SMACSS</h2>
+                
+                <div class="card">
+                    <h3 class="card__title">1. Base</h3>
+                    <div class="card__content">
+                        <p>Los estilos base son los estilos predeterminados para elementos HTML. No incluyen clases ni IDs, solo selectores de elementos, selectores de atributos, pseudo-clases, selectores hijos o hermanos.</p>
+                        <div class="code-example">
+                            <pre>
+body {
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: #0066cc;
+}
+
+input[type="text"] {
+    border: 1px solid #ccc;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card__title">2. Layout</h3>
+                    <div class="card__content">
+                        <p>Los estilos de layout dividen la página en secciones. Layouts sostienen uno o más módulos juntos. Se prefijan con "l-" o "layout-".</p>
+                        <div class="code-example">
+                            <pre>
+.l-header {
+    width: 100%;
+    position: fixed;
+}
+
+.l-sidebar {
+    float: left;
+    width: 200px;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card__title">3. Módulo</h3>
+                    <div class="card__content">
+                        <p>Los módulos son los componentes reutilizables y modulares de nuestro diseño. Son la mayor parte de su sitio.</p>
+                        <div class="code-example">
+                            <pre>
+.card {
+    background: #fff;
+    border-radius: 4px;
+}
+
+.card__title {
+    font-size: 1.2em;
+}
+
+.card__content {
+    padding: 1em;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card__title">4. Estado</h3>
+                    <div class="card__content">
+                        <p>Los estilos de estado describen cómo nuestros módulos o layouts lucirán en un estado particular. Se prefijan con "is-" o "has-".</p>
+                        <div class="code-example">
+                            <pre>
+.is-hidden {
+    display: none;
+}
+
+.is-active {
+    background: #f0f0f0;
+}
+
+.has-error {
+    border-color: red;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card__title">5. Tema</h3>
+                    <div class="card__content">
+                        <p>Los estilos de tema son similares a los estilos de estado pero definen colores y aspectos visuales que dan un aspecto específico a módulos o layouts.</p>
+                        <div class="code-example">
+                            <pre>
+.theme-dark {
+    background: #333;
+    color: #fff;
+}
+
+.theme-holiday {
+    background: url('snowflakes.png');
+    color: #red;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mejores-practicas" class="section">
+                <h2 class="section__title">Mejores Prácticas SMACSS</h2>
+                <div class="card">
+                    <div class="card__content">
+                        <ul style="margin: 0 0 0 2rem;">
+                            <li><strong>Minimizar la profundidad de los selectores:</strong> Usar clases específicas en lugar de selectores anidados.</li>
+                            <li><strong>Evitar IDs:</strong> Los IDs tienen una especificidad muy alta y son menos reutilizables.</li>
+                            <li><strong>Usar prefijos significativos:</strong> Como l- para layouts, is- para estados, theme- para temas.</li>
+                            <li><strong>Organizar CSS por categorías:</strong> Mantener archivos separados para cada categoría SMACSS.</li>
+                            <li><strong>Mantener la modularidad:</strong> Crear módulos independientes que puedan reutilizarse.</li>
+                            <li><strong>Documentar el código:</strong> Incluir comentarios que expliquen la función de cada módulo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="l-footer">
+        <div class="l-container">
+            <p>© 2024 Guía SMACSS - Desarrollado con fines educativos</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="js/template.js"></script>
+    <button class="top-button" aria-label="Volver arriba" title="Volver arriba"></button>
+</body>
+</html>
